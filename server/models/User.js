@@ -26,8 +26,14 @@ userSchema.pre('save', function(next) {
       user.password = hash;
       next();
     })
+  });
+});
+
+userSchema.methods.comparePasswords = function(candidatePassword, callback) {
+  bcrypt.compare(candidatePassword, this.password, function(err, isMatch){
+    if (err) { return callback(err); }
   })
-})
+}
 
 
 // Create Model class
