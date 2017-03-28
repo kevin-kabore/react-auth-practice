@@ -7,7 +7,7 @@ const LocalSrategy = require('passport-local');
 
 // Crate local Strategy
 const localOptions = { usernameField: 'email'};
-const localLogin = new LocalSrategy( {localOptions}, function(email, passport, done) {
+const localLogin = new LocalSrategy(localOptions, function(email, password, done) {
   // Verify username and password, call done with the user
   // if it is with the correct email and password
   // Otherwise, call false
